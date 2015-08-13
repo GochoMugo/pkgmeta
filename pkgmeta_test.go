@@ -30,6 +30,10 @@ func TestSuccessfulLoad(t *testing.T) {
 	if pkg.Name != "pkgmeta" {
 		t.Error("pkg.name mismatch")
 	}
+
+	if pkg.Author.Name != "GochoMugo" {
+		t.Error("pkg.author.name mismatch")
+	}
 }
 
 func TestLoadMissingFile(t *testing.T) {

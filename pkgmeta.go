@@ -12,7 +12,14 @@ import (
 // Metadata is a struct of common key-value pairs in package manifest
 // It is largely influenced by Node.js/npm package.json. See https://docs.npmjs.com/files/package.json
 type Metadata struct {
-	Name, Version string
+	Name, Version, Description, Homepage, License string
+	Author                                        User
+	Authors, Contributors                         []User
+}
+
+// User is a struct of user information
+type User struct {
+	Name, Email, URL string
 }
 
 // Load reads the package manifest file at `filepath` and unmarshals its content into the receiving variable

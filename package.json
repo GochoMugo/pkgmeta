@@ -1,4 +1,11 @@
 {
   "name": "pkgmeta",
-  "version": "0.0.0"
+  "version": "0.0.0",
+  "description": "load project metadata from a manifest file such as package.json, manifest.json etc.",
+  "author": {
+      "name": "GochoMugo",
+      "email": "mugo@forfuture.co.ke",
+      "url": "https://gochomugo.github.io"
+  },
+  "license": "MIT"
 }
