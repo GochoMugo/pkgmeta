@@ -15,7 +15,7 @@ type Metadata struct {
 	Name, Version string
 }
 
-// Load reads the package.json and unmarshals its content into the receiving variable
+// Load reads the package manifest file at `filepath` and unmarshals its content into the receiving variable
 func Load(filepath string, result interface{}) error {
 	metadata, err := ioutil.ReadFile(filepath)
 
@@ -30,4 +30,11 @@ func Load(filepath string, result interface{}) error {
 	}
 
 	return nil
+}
+
+// LoadDefaults reads the package manifest file using the default Metadata struct
+func LoadDefaults(filepath string) (Metadata, error) {
+	var metadata Metadata
+	err := Load(filepath, &metadata)
+	return metadata, err
 }

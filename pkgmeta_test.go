@@ -10,9 +10,11 @@ import (
 func ExampleLoad() {
 	var pkg Metadata
 	err := Load("package.json", &pkg)
+
 	if err != nil {
 		log.Fatal("could not load package metadata")
 	}
+
 	fmt.Println(pkg.Name)
 	// Output: pkgmeta
 }
@@ -63,5 +65,28 @@ func TestLoadUsingCustomStruct(t *testing.T) {
 
 	if result.Name != "pkgmeta" {
 		t.Error("failed to use custom struct")
+	}
+}
+
+func ExampleLoadDefaults() {
+	metdata, err := LoadDefaults("package.json")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println(metdata.Name)
+	// Output: pkgmeta
+}
+
+func TestLoadDefaults(t *testing.T) {
+	metadata, err := LoadDefaults("package.json")
+
+	if err != nil {
+		t.Error("unexpected error")
+	}
+
+	if metadata.Name != "pkgmeta" {
+		t.Error("failed to load defaults")
 	}
 }
